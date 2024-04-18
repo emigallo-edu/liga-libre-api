@@ -1,5 +1,5 @@
-﻿using Model;
-using Model.Entities;
+﻿using Model.Entities;
+using Model.Repositories;
 using Newtonsoft.Json;
 
 namespace Repository

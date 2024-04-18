@@ -101,7 +101,7 @@ namespace NetWebApi.Controllers
                 .ToList();
 
             List<Club> result2 = clubs
-               .Where(x=>x.IsFromBuenosAires())
+               .Where(x => x.IsFromBuenosAires())
                .ToList();
 
             List<Club> result3 = clubs
@@ -131,7 +131,7 @@ namespace NetWebApi.Controllers
             return result;
         }
 
-        private List<T> Where<T>(List<T> clubs, Func<T, bool> filter) 
+        private List<T> Where<T>(List<T> clubs, Func<T, bool> filter)
         {
             List<T> result = new List<T>();
 

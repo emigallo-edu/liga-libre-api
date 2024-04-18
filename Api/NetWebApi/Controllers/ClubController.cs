@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Model;
 using Model.Entities;
+using Model.Repositories;
 using NetWebApi.Model;
 using Security;
 

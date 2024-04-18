@@ -1,7 +1,10 @@
 using Model.Entities;
+using Model.Repositories;
+using Model.Services;
 using NetWebApi.Context;
 using NetWebApi.Model;
 using NetWebApi.Utils;
+using Repository;
 using Security;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +18,13 @@ builder.Services.AddControllers(
 //}
 
 );
+
+
+builder.Services.AddScoped<StandingRepository, StandingRepository>();
+builder.Services.AddScoped<IClubRepository, ClubDbRepository>();
+builder.Services.AddScoped<ITournamentRepository, TournamentRepository>();
+builder.Services.AddScoped<CreateTournamentService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

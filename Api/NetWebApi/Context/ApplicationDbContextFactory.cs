@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Model;
+using Model.Repositories;
 using Repository;
 using Security;
 

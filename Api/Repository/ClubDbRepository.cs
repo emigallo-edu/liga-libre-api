@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Model;
 using Model.Entities;
+using Model.Repositories;
 
 namespace Repository
 {
