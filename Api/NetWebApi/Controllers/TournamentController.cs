@@ -20,7 +20,7 @@ namespace NetWebApi.Controllers
             try
             {
                 await this._createTournamentService.ExecuteAsync();
-                return Ok("Torneo creado correctamente");
+                return Ok($"Torneo {this._createTournamentService} creado correctamente");
             }
             catch (Exception)
             {
