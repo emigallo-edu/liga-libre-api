@@ -2,7 +2,7 @@
 
 namespace Model.Entities
 {
-    public class Club
+    public class Club : object
     {
         public Club()
         {
@@ -38,6 +38,24 @@ namespace Model.Entities
         public bool IsFromBuenosAires()
         {
             return this.City == "BsAs";
+        }
+
+        public Club GetDTO()
+        {
+            return new Club()
+            {
+                Id = this.Id,
+                Name = this.Name,
+                Birthday = this.Birthday,
+                City = this.City,
+                Email = this.Email,
+                NumberOfPartners = this.NumberOfPartners,
+                Phone = this.Phone,
+                Address = this.Address,
+                StadiumName = this.StadiumName,
+                Players = this.Players,
+                Stadium = null
+            };
         }
     }
 }

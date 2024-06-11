@@ -29,8 +29,16 @@ namespace NetWebApi.Controllers
             return Ok();
         }
 
+
+        [HttpGet("id/{id}")]
+        public async Task<IActionResult> Get([FromRoute] int id)
+        {
+            Club result = await this._repository.GetByIdAsync(id);
+            return Ok(result);
+        }
+
         [HttpGet("all")]
-        [Authorize(Roles = Roles.USER)]
+        //[Authorize(Roles = Roles.USER)]
         public async Task<IActionResult> GetAll()
         {
             var result = await this._repository.GetAllAsync();
@@ -56,9 +64,21 @@ namespace NetWebApi.Controllers
             await this._repository.ChangeName(dto.Id, dto.Name);
             return Ok("El registro se modifico correctamente");
         }
+
+        [HttpPut()]
+        public async Task<IActionResult> Update(ClubDTO club)
+        {
+            await this._repository.UpdateAsync(this._mapper.Map<Club>(club));
+            return Ok();
+        }
+
+        [HttpPut("withStadium")]
+        public async Task<IActionResult> UpdateWithStadium(List<Club> clubs)
+        {
+            await this._repository.UpdateWithStadiumAsync(clubs);
+            return Ok();
+        }
     }
-
-
 
     public static class Claims
     {
