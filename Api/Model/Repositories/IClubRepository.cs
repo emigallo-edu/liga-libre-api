@@ -11,5 +11,6 @@ namespace Model.Repositories
         Task ChangeName(int cludId, string newName);
         Task UpdateAsync(Club club);
         Task UpdateWithStadiumAsync(List<Club> clubs);
+        Task<List<Club>> GetClubsWithRegulations();
     }
 }

@@ -13,7 +13,7 @@ namespace NetWebApi.Utils
         public static List<T> WhereExtension<T>(this List<T> clubs, Func<T, bool> filter)
         {
             List<T> result = new List<T>();
-
+            
             foreach (T club in clubs)
             {
                 if (filter(club))

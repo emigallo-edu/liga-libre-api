@@ -21,7 +21,28 @@ namespace NetWebApi.Controllers
         [HttpGet("{tournamentId}")]
         public async Task<IActionResult> GetAll([FromRoute] int tournamentId)
         {
-            var result = await this._matchRepository.GetByTournamentsync(tournamentId);
+            var result = await this._matchRepository.GetByTournamentAsyncV1(tournamentId);
+            return Ok(result);
+        }
+
+        [HttpGet("v2/{tournamentId}")]
+        public async Task<IActionResult> GetAllV2([FromRoute] int tournamentId)
+        {
+            var result = await this._matchRepository.GetByTournamentAsyncV2(tournamentId);
+            return Ok(result);
+        }
+
+        [HttpGet("v3/{tournamentId}")]
+        public async Task<IActionResult> GetAllV3([FromRoute] int tournamentId)
+        {
+            var result = await this._matchRepository.GetByTournamentAsyncV3(tournamentId);
+            return Ok(result);
+        }
+
+        [HttpGet("v4/{tournamentId}")]
+        public async Task<IActionResult> GetAllV4([FromRoute] int tournamentId)
+        {
+            var result = await this._matchRepository.GetByTournamentAsyncV4(tournamentId);
             return Ok(result);
         }
 

@@ -22,6 +22,7 @@ namespace Repository
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Standing> Standings { get; set; }
         public DbSet<ResponseAudit> ResponseAudits { get; set; }
+        public DbSet<Regulation> Regulations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

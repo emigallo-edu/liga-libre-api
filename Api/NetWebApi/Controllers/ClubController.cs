@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Model.Entities;
 using Model.Repositories;
 using NetWebApi.Model;
 using NetWebApi.Utils;
-using Security;
 
 namespace NetWebApi.Controllers
 {
@@ -126,6 +124,13 @@ namespace NetWebApi.Controllers
              .ToList();
 
             return Ok(result);
+        }
+
+        [HttpGet("regulations")]
+        public async Task<IActionResult> GetClubsWithRegulations()
+        {
+            var list = await this._repository.GetClubsWithRegulations();
+            return Ok(list);
         }
 
         private bool Filter(Club club)

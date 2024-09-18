@@ -17,6 +17,13 @@ namespace NetWebApi.Controllers
             this._standingRepository = standingRepository;
         }
 
+        [HttpGet("Id/{id}")]
+        public async Task<IActionResult> Get([FromRoute] int id)
+        {
+            var list = await this._standingRepository.GetAsync(id);
+            return Ok(list);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Index([FromRoute] int id)
         {

@@ -236,8 +236,6 @@ namespace Repository.Migrations
                 table: "Standings",
                 column: "ClubId",
                 unique: true);
-        
-            InsertDataInTables.Insert(migrationBuilder);
         }
 
         /// <inheritdoc />

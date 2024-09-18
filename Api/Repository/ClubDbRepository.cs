@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Model.Entities;
 using Model.Repositories;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Repository
 {
@@ -246,6 +244,21 @@ namespace Repository
                 context.Update(club);
                 string changeNameTrack = context.ChangeTracker.DebugView.LongView;
                 await context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<Club>> GetClubsWithRegulations()
+        {
+            using (var context = new ApplicationDbContext(this._options))
+            {
+                var query = from c in context.Clubs
+                            join s in context.Stadiums
+                                on c.Id equals s.ClubId
+                            join r in context.Regulations
+                                on s.Aux equals r.Id.ToString()
+                            where s.Capacity > 1000
+                            select c;
+                return await query.ToListAsync();
             }
         }
     }

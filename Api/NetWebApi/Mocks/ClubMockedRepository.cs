@@ -29,6 +29,11 @@ namespace NetWebApi.Mocks
             throw new NotImplementedException();
         }
 
+        public Task<List<Club>> GetClubsWithRegulations()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<int> InsertAsync(Club club)
         {
             throw new NotImplementedException();
