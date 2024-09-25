@@ -10,9 +10,18 @@ namespace NetWebApi.Controllers
         [HttpGet("test")]
         public IActionResult Index()
         {
-            string text = new DelegateExample().Format(
+            string text = new FormatTextExampleWithDelegate().Format(
                 "Este es un curso de programación en EducacionIT",
-                CustomFormat);
+                FormatTextExampleWithDelegate.FirstLetterUpperCase);
+
+            string text2 = new FormatTextExampleWithDelegate().Format(
+                "Este es un curso de programación en EducacionIT",
+                FormatTextExampleWithDelegate.SecondLetterUpperCase);
+
+            string text3 = new FormatTextExampleWithDelegate().Format(
+               "Este es un curso de programación en EducacionIT",
+               CustomFormat);
+
             return Ok(text);
         }
 

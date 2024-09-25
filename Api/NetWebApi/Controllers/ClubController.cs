@@ -4,6 +4,7 @@ using Model.Entities;
 using Model.Repositories;
 using NetWebApi.Model;
 using NetWebApi.Utils;
+using Repository;
 
 namespace NetWebApi.Controllers
 {
