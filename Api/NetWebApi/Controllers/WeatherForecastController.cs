@@ -20,6 +20,7 @@ namespace NetWebApi.Controllers
         [HttpGet("name/{name}")]
         public IEnumerable<WeatherForecast> GetWeatherForecastWithQueryPath([FromRoute] string name)
         {
+            throw new ArgumentException();
             return this.GetForecast().Where(x => x.Summary == name);
         }
 

@@ -14,6 +14,25 @@ namespace Model.Entities
          *    PRIMARY KEY (Id)
          *  )
          * */
+        /*CREATE TABLE Clubes
+         * ( Id INT PRIMARY KEY,
+         *  Name VARCHAR(50) NOT NULL
+         *  PRIMARY KEY (Id)
+         * )
+         */
+
+        /* CREATE TABLE Matches
+         * ( Id INT PRIMARY KEY,
+         *  TournamentId INT NOT NULL,
+         *  Date DATETIME NOT NULL,
+         *  LocalClubId INT NOT NULL,
+         *  visitingClubId INT NOT NULL
+         *  primary key (Id),
+         *  foreign key (LocalClubId) references Clubes(Id),
+         *  foreign key (visitingClubId) references Clubes(Id)
+         * )
+         * 
+         */
 
         public Match()
         {
@@ -26,11 +45,10 @@ namespace Model.Entities
         public DateTime Date { get; set; }
 
         public int LocalClubId { get; set; }
-        public int VisitingClubId { get; set; }
-
         [Required]
         public Club LocalClub { get; set; }
 
+        public int VisitingClubId { get; set; }
         [Required]
         public Club VisitingClub { get; set; }
     }

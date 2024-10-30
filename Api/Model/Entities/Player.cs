@@ -12,6 +12,8 @@ namespace Model.Entities
         [Required] 
         public DateTime Birthday { get; set; }
 
+        public string Address { get; set; }
+
         public int ClubId { get; set; } 
         public Club Club { get; set; }
     }
