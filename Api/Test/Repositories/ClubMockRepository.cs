@@ -32,6 +32,11 @@ namespace Test.Repositories
             return this._mock.First(x => x.Id == id);
         }
 
+        public Task<List<Club>> GetClubsWithRegulations()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<int> InsertAsync(Club club)
         {
             club.Id = 379;
