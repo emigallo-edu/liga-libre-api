@@ -6,7 +6,7 @@ using Test.Repositories;
 namespace Test
 {
     [TestClass]
-    public class ClubServiceTest
+    public class ClubServiceWithMockedRepositoryTest
     {
         [TestMethod]
         public async Task Given_AValidClub_When_Create_Then_Should_CreateIt()
