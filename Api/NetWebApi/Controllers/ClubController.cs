@@ -4,7 +4,6 @@ using Model.Entities;
 using Model.Repositories;
 using NetWebApi.Model;
 using NetWebApi.Utils;
-using Repository;
 
 namespace NetWebApi.Controllers
 {
@@ -38,7 +37,6 @@ namespace NetWebApi.Controllers
         }
 
         [HttpGet("all")]
-        //[Authorize(Roles = Roles.USER)]
         public async Task<IActionResult> GetAll()
         {
             var result = await this._repository.GetAllAsync();

@@ -23,7 +23,7 @@ namespace NetWebApi.Controllers
             this._signInManager = signInManager;
         }
 
-        [HttpGet("Login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginRequestDTO dto)
         {
             var result = await this._signInManager.PasswordSignInAsync(dto.UserName, dto.Password, false, false);

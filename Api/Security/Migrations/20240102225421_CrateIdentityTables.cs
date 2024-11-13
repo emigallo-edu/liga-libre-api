@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -194,6 +195,9 @@ namespace Security.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.Sql("INSERT INTO AspNetRoles(Id, Name, NormalizedName, ConcurrencyStamp) VALUES(1, 'USER', 'USER', GETDATE())");
+            migrationBuilder.Sql("INSERT INTO AspNetRoles(Id, Name, NormalizedName, ConcurrencyStamp) VALUES(2, 'ADMIN', 'ADMIN', GETDATE())");
         }
 
         /// <inheritdoc />
