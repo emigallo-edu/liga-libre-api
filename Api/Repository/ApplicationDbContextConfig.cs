@@ -68,6 +68,8 @@ namespace Repository
                 .WithOne(x => x.Stadium)
                 .HasForeignKey<Club>(x => x.StadiumName)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            entity.Ignore(x => x.Aux);
         }
 
         internal static void ConfigTournament(this ModelBuilder mb)
