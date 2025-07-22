@@ -21,5 +21,23 @@ namespace Repository
                 return await context.SaveChangesAsync();
             }
         }
+
+        public async Task<Tournament> GetByIdAsync(int id)
+        {
+            using (var context = new ApplicationDbContext(this._options))
+            {
+                return await context.Tournaments
+                    .FirstAsync(x => x.Id == id);
+            }
+        }
+
+        public async Task<List<Tournament>> GetAllAsync()
+        {
+            using (var context = new ApplicationDbContext(this._options))
+            {
+                return await context.Tournaments
+                    .ToListAsync();
+            }
+        }
     }
 }

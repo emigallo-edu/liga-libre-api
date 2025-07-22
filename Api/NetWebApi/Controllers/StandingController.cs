@@ -17,10 +17,10 @@ namespace NetWebApi.Controllers
             this._standingRepository = standingRepository;
         }
 
-        [HttpGet("Id/{id}")]
+        [HttpGet("TournamentId/{id}")]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
-            var list = await this._standingRepository.GetAsync(id);
+            var list = await this._standingRepository.GetByTournamentAsync(id);
             return Ok(list);
         }
 
@@ -29,7 +29,7 @@ namespace NetWebApi.Controllers
         {
             List<StandingReportDTO> result = new List<StandingReportDTO>();
 
-            foreach (Standing standing in await this._standingRepository.GetAsync(id))
+            foreach (Standing standing in await this._standingRepository.GetByTournamentAsync(id))
             {
                 result.Add(new StandingReportDTO(standing));
             }

@@ -2,7 +2,7 @@
 
 namespace Model.Entities
 {
-    public class Club : object
+    public class Club
     {
         public Club()
         {

@@ -1,8 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Model.Entities;
 using Model.Repositories;
 using Repository;
 using Security;
+using System;
 
 namespace NetWebApi.Context
 {
@@ -40,6 +44,34 @@ namespace NetWebApi.Context
         {
             services.AddDbContext<ApplicationDbContext>(
                 options => options.Config());
+        }
+
+        public static void AddInMemoryApplicationDbContext(this IServiceCollection services)
+        {
+            var connection = new SqliteConnection("DataSource=:memory:");
+            connection.Open();
+            services.AddSingleton(connection);
+            services.AddDbContext<ApplicationDbContext>((sp, options) =>
+            {
+                var conn = sp.GetRequiredService<SqliteConnection>();
+                options
+                    .UseSqlite(conn)
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors()
+                    .LogTo(Console.WriteLine, LogLevel.Trace, DbContextLoggerOptions.SingleLine);
+            });
+
+            using var scope = services.BuildServiceProvider().CreateScope();
+            var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            db.Database.EnsureCreated();
+
+            DataSeeder.SeedLigaLibreData(out var clubes, out var torneo, out var partidos, out var resultados); 
+            db.Clubs.AddRange(clubes);
+            db.Tournaments.Add(torneo);
+            db.Matches.AddRange(partidos);
+            db.AddRange(resultados);
+            db.SaveChanges();
         }
 
         public static void AddSecurityDbContext(this IServiceCollection services)

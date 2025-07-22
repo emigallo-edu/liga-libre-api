@@ -28,7 +28,7 @@ builder.Services.AddScoped<CreateTournamentService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplicationDbContext();
+builder.Services.AddInMemoryApplicationDbContext();
 builder.Services.AddRepositories(DatabaseType.SqlServer);
 builder.Services.AddSecurityDbContext();
 builder.Services.AddSecurity();
@@ -51,12 +51,8 @@ builder.Services.AddAutoMapper(configuration =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 ApplicationDbContextFactoryConfig.SetProvider(app.Services);
 app.UseHttpsRedirection();

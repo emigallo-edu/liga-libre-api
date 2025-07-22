@@ -12,16 +12,27 @@ namespace Repository
             this._options = options;
         }
 
-        public async Task<List<Standing>> GetAsync(int id)
+        public async Task<List<Standing>> GetByTournamentAsync(int tournamentId)
         {
             using (var context = new ApplicationDbContext(this._options))
             {
                 return await context.Standings
                     .Include(x => x.Club)
-                    .Where(x => x.TournamentId == id)
+                    .Where(x => x.TournamentId == tournamentId)
                     .ToListAsync();
             }
         }
+
+        //public async Task<List<Standing>> GetAllAsync()
+        //{
+        //    using (var context = new ApplicationDbContext(this._options))
+        //    {
+        //        return await context.Standings
+        //            .Include(x => x.Club)
+        //            .Where(x => x.TournamentId == id)
+        //            .ToListAsync();
+        //    }
+        //}
 
         public async Task<Standing> GetAsync(int id, int clubId)
         {
